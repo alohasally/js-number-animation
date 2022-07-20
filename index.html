@@ -9,8 +9,30 @@
     <title>Js Number Animation</title>
 </head>
 <body>
-    <div class="num_animation" data-rate="90">0</div>
-    <script src="./script.js"></script>
+    <div class="num_animation" data-rate="600">0</div>
+    <div class="num_animation" data-rate="60">0</div>
+    <div class="num_animation" data-rate="40">0</div>
+    <script>
+        const numAni = document.querySelectorAll('.num_animation');
+        
+function changeNum(idx){
+    let num = 0;
+    let intervalTime = 10;
+    const targetnum = numAni[idx].getAttribute('data-rate');
+    if(targetnum > 500){
+        intervalTime = 0.01;
+    }
+    const timer =setInterval(function(){
+    ++num;
+    numAni[idx].innerText = num; // numAni.innerHTML = '<a>'+num+'</a>'
+    if(num == targetnum){
+        clearInterval(timer);
+        };
+    },intervalTime);
+}
+for(let i = 0; i<numAni.length; i++)
+changeNum(i)
+    </script>
 </body>
 
 
